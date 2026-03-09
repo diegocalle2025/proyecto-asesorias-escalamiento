@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "8b234567-89ab-4cde-0123-456789abcdef",
+		"name": "Proyecto Asesorias - Completo",
+		"description": "Colección completa con todos los métodos CRUD para el Monolito y el Microservicio.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Monolito (Puerto 3000)",
+			"item": [
+				{
+					"name": "Clientes",
+					"item": [
+						{ "name": "Listar Clientes", "request": { "method": "GET", "url": "http://localhost:3000/api/clientes" } },
+						{ "name": "Crear Cliente", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\n    \"nombre\": \"Juan Perez\",\n    \"email\": \"juan@example.com\"\n}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost:3000/api/clientes" } },
+						{ "name": "Eliminar Cliente", "request": { "method": "DELETE", "url": "http://localhost:3000/api/clientes/:id" } }
+					]
+				},
+				{
+					"name": "Universidades",
+					"item": [
+						{ "name": "Listar Universidades", "request": { "method": "GET", "url": "http://localhost:3000/api/universidades" } },
+						{ "name": "Crear Universidad", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\n    \"nombre\": \"IUDigital\",\n    \"direccion\": \"Calle 123\",\n    \"telefono\": \"555-5555\"\n}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost:3000/api/universidades" } },
+						{ "name": "Eliminar Universidad", "request": { "method": "DELETE", "url": "http://localhost:3000/api/universidades/:id" } }
+					]
+				},
+				{
+					"name": "Etapas",
+					"item": [
+						{ "name": "Listar Etapas", "request": { "method": "GET", "url": "http://localhost:3000/api/etapas" } },
+						{ "name": "Crear Etapa", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\n    \"nombre\": \"anteproyecto\"\n}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost:3000/api/etapas" } },
+						{ "name": "Eliminar Etapa", "request": { "method": "DELETE", "url": "http://localhost:3000/api/etapas/:id" } }
+					]
+				},
+				{
+					"name": "Tipos de Proyecto",
+					"item": [
+						{ "name": "Listar Tipos", "request": { "method": "GET", "url": "http://localhost:3000/api/tipos-proyecto" } },
+						{ "name": "Crear Tipo", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\n    \"nombre\": \"ensayo\"\n}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost:3000/api/tipos-proyecto" } },
+						{ "name": "Eliminar Tipo", "request": { "method": "DELETE", "url": "http://localhost:3000/api/tipos-proyecto/:id" } }
+					]
+				}
+			]
+		},
+		{
+			"name": "2. Microservicio Proyectos (Puerto 4000)",
+			"item": [
+				{ "name": "Listar Proyectos", "request": { "method": "GET", "url": "http://localhost:4000/api/proyectos" } },
+				{ "name": "Crear Proyecto", "request": { "method": "POST", "body": { "mode": "raw", "raw": "{\n    \"numero\": \"PROY-001\",\n    \"titulo\": \"Proyecto Excelencia\",\n    \"descripcion\": \"Prueba de microservicio\",\n    \"fechaIniciacion\": \"2026-03-08\",\n    \"fechaEntrega\": \"2026-12-31\",\n    \"cliente\": \"ID_CLIENTE\",\n    \"universidad\": \"ID_UNIVERSIDAD\",\n    \"tipoProyecto\": \"ID_TIPO\",\n    \"etapa\": \"ID_ETAPA\",\n    \"valor\": 500000\n}", "options": { "raw": { "language": "json" } } }, "url": "http://localhost:4000/api/proyectos" } },
+				{ "name": "Eliminar Proyecto", "request": { "method": "DELETE", "url": "http://localhost:4000/api/proyectos/:id" } }
+			]
+		}
+	]
+}

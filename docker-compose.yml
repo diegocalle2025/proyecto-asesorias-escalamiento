@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # Microservicio Monolito (Clientes, Universidades, Etapas, Tipos)
+  monolito-asesorias:
+    build: .
+    container_name: monolito-asesorias
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - MONGODB_URI=${MONGODB_URI}
+    restart: always
+
+  # Microservicio Desacoplado (Proyectos)
+  microservicio-proyectos:
+    build: ./microservicio-proyectos
+    container_name: microservicio-proyectos
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGODB_URI=${MONGODB_URI}
+    restart: always
