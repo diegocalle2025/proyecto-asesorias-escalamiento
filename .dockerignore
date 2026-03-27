@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log*
+Dockerfile
+docker-compose*.yml
+.git
+.gitignore
+.env
+.dockerignore
+*.md
+Caso_de_Estudio-1.pdf
+postman_collection.json
+nginx.conf
+microservicio-proyectos
+# Excluir la carpeta del microservicio del build del monolito es clave para el tamaño

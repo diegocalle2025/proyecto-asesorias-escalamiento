@@ -4,6 +4,7 @@ services:
   # Microservicio Monolito (Clientes, Universidades, Etapas, Tipos)
   monolito-asesorias:
     build: .
+    image: dcalle2026/monolito-asesorias:latest
     container_name: monolito-asesorias
     ports:
       - "3000:3000"
@@ -12,13 +13,26 @@ services:
       - MONGODB_URI=${MONGODB_URI}
     restart: always
 
-  # Microservicio Desacoplado (Proyectos)
+  # Microservicio Desacoplado (Proyectos) - Escalado horizontalmente
   microservicio-proyectos:
     build: ./microservicio-proyectos
-    container_name: microservicio-proyectos
-    ports:
-      - "4000:4000"
+    image: dcalle2026/microservicio-proyectos:latest
+    # container_name se omite para permitir múltiples réplicas
     environment:
       - PORT=4000
       - MONGODB_URI=${MONGODB_URI}
+    deploy:
+      replicas: 3 # Se crean 3 instancias del servicio
+    restart: always
+
+  # Balanceador de Carga (Nginx)
+  nginx:
+    image: nginx:alpine
+    container_name: load-balancer-proyectos
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "4000:80" # Expone el balanceador en el puerto original del microservicio
+    depends_on:
+      - microservicio-proyectos
     restart: always
