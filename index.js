@@ -13,6 +13,11 @@ app.use(express.json());
 // Conexión base de datos
 getConnection();
 
+// Rutas base
+app.get('/', (req, res) => {
+    res.send('¡Bienvenido al Monolito de Asesorías! Los servicios están activos.');
+});
+
 // Rutas
 app.use('/api/clientes', require('./routes/cliente'));
 app.use('/api/etapas', require('./routes/etapa'));

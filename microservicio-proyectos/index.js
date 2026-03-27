@@ -20,6 +20,11 @@ app.use(express.json());
 // Conexión base de datos
 getConnection();
 
+// Ruta base
+app.get('/', (req, res) => {
+    res.send('¡Bienvenido al Microservicio de Proyectos! (Balanceado con Nginx)');
+});
+
 // Rutas de Microservicio Proyectos
 app.use('/api/proyectos', require('./routes/proyecto'));
 
